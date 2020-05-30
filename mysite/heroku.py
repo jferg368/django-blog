@@ -2,7 +2,7 @@ import os
 
 import dj_database_url
 
-from mysite.mysite.settings import *
+from mysite.settings import *
 
 DATABASES = {
     "default": dj_database_url.config(
