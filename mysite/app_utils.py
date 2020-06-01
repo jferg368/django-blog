@@ -45,7 +45,7 @@ class DatabaseCredentials(Secret):
 
     def __init__(self):
         super().__init__('django_db_creds')
-        self.username = self.secret['username']
+        self.user = self.secret['username']
         self.password = self.secret['password']
         self.engine = self.secret['engine']
         self.host = self.secret['host']
