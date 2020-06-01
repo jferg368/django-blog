@@ -4,15 +4,15 @@ from mysite import app_utils
 db = app_utils.DatabaseCredentials()
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'djangodb',
-            'USER': db.user,
-            'PASSWORD': db.password,
-            'HOST': db.host,
-            'PORT': db.port
-        }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "djangodb",
+        "USER": db.user,
+        "PASSWORD": db.password,
+        "HOST": db.host,
+        "PORT": db.port,
     }
+}
 
 DEBUG = False
 TEMPLATE_DEBUG = False
