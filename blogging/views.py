@@ -54,10 +54,10 @@ def add_model(request):
                 post.author = request.user
                 post.published_date = timezone.now()
                 post.save()
-                return redirect('/')
+                return redirect("/")
         except ValueError:
             return render(request, "blogging/error-login.html")
     else:  # GET
         form = MyPostForm()
-        context = {'form': form}
+        context = {"form": form}
         return render(request, "blogging/add.html", context)
