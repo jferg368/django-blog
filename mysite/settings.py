@@ -115,4 +115,5 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 LOGIN_URL = "/login/"
+STATIC_ROOT = "/Users/fergujo/UWPythonCertificate/Python230/assignments/django-blog/mysite/blogging/static"
 LOGIN_REDIRECT_URL = "/"
