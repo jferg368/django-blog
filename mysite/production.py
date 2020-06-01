@@ -1,7 +1,7 @@
 from .settings import *
 from mysite import app_utils
 
-db = app_utils.DatabaseCreds()
+db = app_utils.DatabaseCredentials()
 
 DATABASES = {
         'default': {
