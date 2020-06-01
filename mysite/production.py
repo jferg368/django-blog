@@ -1,17 +1,18 @@
-import os
-
-import dj_database_url
-
 from .settings import *
 from mysite import app_utils
 
-# db = app_utils.DatabaseCreds()
+db = app_utils.DatabaseCreds()
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default="sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
-    )
-}
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'djangodb',
+            'USER': db.user,
+            'PASSWORD': db.password,
+            'HOST': db.host,
+            'PORT': db.port
+        }
+    }
 
 DEBUG = False
 TEMPLATE_DEBUG = False
