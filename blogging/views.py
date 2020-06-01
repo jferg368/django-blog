@@ -1,9 +1,10 @@
 from django.http import Http404
-from blogging.models import Post
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.utils import timezone
 from rest_framework import viewsets, permissions
 from blogging.serializers import CategorySerializer, PostSerializer
 from blogging.models import Post, Category
+from blogging.forms import MyPostForm
 
 
 def list_view(request, *args, **kwargs):
@@ -42,3 +43,21 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+def add_model(request):
+    if request.method == "POST":
+        try:
+            form = MyPostForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.published_date = timezone.now()
+                post.save()
+                return redirect('/')
+        except ValueError:
+            return render(request, "blogging/error-login.html")
+    else:  # GET
+        form = MyPostForm()
+        context = {'form': form}
+        return render(request, "blogging/add.html", context)
